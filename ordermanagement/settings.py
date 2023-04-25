@@ -98,12 +98,12 @@ DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'defaultdb',                      # Or path to database file if using sqlite3.
+        'NAME': 'd7ucb8i453rph8',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'doadmin',
-        'PASSWORD': 'AVNS_ykM2nswssFlWNdLVTj_',
-        'HOST': 'dbaas-db-2320090-do-user-8265584-0.b.db.ondigitalocean.com',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '25060',                      # Set to empty string for default.
+        'USER': 'zrwioslvpqkyou',
+        'PASSWORD': '0ca269be082e7b4f616b9e7bd1eebdb636871c76aee5a8061cfe396f015ff694',
+        'HOST': 'ec2-34-236-199-229.compute-1.amazonaws.com',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',                      # Set to empty string for default.
     }
 }
 
