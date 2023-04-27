@@ -30,29 +30,10 @@ def create_currency():
     # ----- old data deletion ----
     pastDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(9,17)).time()
     nsepadDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(9,17)).date()
-    #LivepastDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(8,59)).time()
-    #LivensepadDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(8,59)).date()
-    
-    LiveSegment.objects.filter(time__lte = pastDate).delete()
-    LiveSegment.objects.filter(date__lt = nsepadDate).delete()
+
     pastDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(9,17))
     segpastDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(9,17)).time()
 
-    #LivepastDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(8,59))
-    #LivensepadDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(8,59)).time()
-
-    
-    #LiveEquityResult.objects.all().delete()
-    TestEquityResult.objects.filter(date__lte = pastDate).delete()
-    #LiveEquityResult.objects.filter(date__lte = pastDate).delete()
-    #LiveSegment.objects.filter(time__lte = pastDate).delete()
-    #LiveSegment.objects.filter(date__lt = nsepadDate).delete()
-    SuperLiveSegment.objects.filter(time__lte = segpastDate).delete()
-    SuperLiveSegment.objects.filter(date__lt = nsepadDate).delete()
-    EquityThree.objects.filter(time__lte = segpastDate).delete()
-    EquityThree.objects.filter(date__lt = nsepadDate).delete()
-    #  -----
-    
     startTime = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(9,17)).time()
     endTime = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(23,1)).time()
     market_stop_time = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(17,1)).time()
@@ -97,140 +78,17 @@ def create_currency():
 
     
     if nowTime > startTime and nowTime < market_stop_time:
-        # gain & loss list -----
-        # fnolist = ['ESCORTS','ATUL']
-        fnolist = ["AARTIIND",
-"ABB",
-"ABBOTINDIA",
-"ACC",
-"ADANIPORTS",
-"ALKEM",
-"AMBUJACEM",
-"APOLLOHOSP",
-"ASIANPAINT",
-"ATUL",
-"AUBANK",
-"AUROPHARMA",
-"AXISBANK",
-"BAJAJ-AUTO",
-"BAJAJFINSV",
-"BAJFINANCE",
-"BALKRISIND",
-"BALRAMCHIN",
-"BANDHANBNK",
-"BATAINDIA",
-"BERGEPAINT",
-"BHARATFORG",
-"BHARTIARTL",
-"BOSCHLTD",
-"BPCL",
-"BRITANNIA",
-"BSOFT",
-"CANFINHOME",
-"CHAMBLFERT",
-"CHOLAFIN",
-"CIPLA",
-"COFORGE",
-"COLPAL",
-"CONCOR",
-"COROMANDEL",
-"CROMPTON",
-"CUMMINSIND",
-"DABUR",
-"DALBHARAT",
-"DEEPAKNTR",
-"DIVISLAB",
-"DIXON",
-"DLF",
-"DRREDDY",
-"EICHERMOT",
-"ESCORTS",
-"GLENMARK",
-"GNFC",
-"GODREJCP",
-"GODREJPROP",
-"GRANULES",
-"GRASIM",
-"GUJGASLTD",
-"HAVELLS",
-"HCLTECH",
-"HDFC",
-"HDFCAMC",
-"HDFCBANK",
-"HDFCLIFE",
-"HINDALCO",
-"HINDUNILVR",
-"ICICIBANK",
-"ICICIGI",
-"ICICIPRULI",
-"IGL",
-"INDHOTEL",
-"INDIAMART",
-"INDIGO",
-"INDUSINDBK",
-"INFY",
-"INTELLECT",
-"IPCALAB",
-"IRCTC",
-"ITC",
-"JINDALSTEL",
-"JSWSTEEL",
-"JUBLFOOD",
-"KOTAKBANK",
-"LAURUSLABS",
-"LICHSGFIN",
-"LT",
-"LTIM",
-"LTTS",
-"LUPIN",
-"M&M",
-"MARICO",
-"MARUTI",
-"MCDOWELL-N",
-"MCX",
-"METROPOLIS",
-"MFSL",
-"MGL",
-"MPHASIS",
-"MRF",
-"MUTHOOTFIN",
-"NAUKRI",
-"NAVINFLUOR",
-"OBEROIRLTY",
-"OFSS",
-"PEL",
-"PERSISTENT",
-"PIDILITIND",
-"PIIND",
-"POLYCAB",
-"PVR",
-"RAMCOCEM",
-"SBICARD",
-"SBILIFE",
-"SBIN",
-"SHREECEM",
-"SHRIRAMFIN",
-"SRF",
-"SUNPHARMA",
-"SUNTV",
-"SYNGENE",
-"TATACHEM",
-"TATACOMM",
-"TATACONSUM",
-"TATAMOTORS",
-"TCS",
-"TECHM",
-"TITAN",
-"TORNTPHARM",
-"TRENT",
-"TVSMOTOR",
-"UBL",
-"ULTRACEMCO",
-"UPL",
-"VEDL",
-"VOLTAS",
-"WIPRO",
-"ZYDUSLIFE"]
+
+        fnolist = ["AARTIIND","ABB","ABBOTINDIA","ACC","ADANIPORTS","ALKEM","AMBUJACEM","APOLLOHOSP","ASIANPAINT","ATUL","AUBANK","AUROPHARMA","AXISBANK","BAJAJ-AUTO","BAJAJFINSV",
+        "BAJFINANCE","BALKRISIND","BALRAMCHIN","BANDHANBNK","BATAINDIA","BERGEPAINT","BHARATFORG","BHARTIARTL","BOSCHLTD","BPCL","BRITANNIA","BSOFT","CANFINHOME","CHAMBLFERT","CHOLAFIN",
+        "CIPLA","COFORGE","COLPAL","CONCOR","COROMANDEL","CROMPTON","CUMMINSIND","DABUR","DALBHARAT","DEEPAKNTR","DIVISLAB","DIXON","DLF","DRREDDY","EICHERMOT","ESCORTS","GLENMARK",
+        "GNFC","GODREJCP","GODREJPROP","GRANULES","GRASIM","GUJGASLTD","HAVELLS","HCLTECH","HDFC","HDFCAMC","HDFCBANK","HDFCLIFE","HINDALCO","HINDUNILVR","ICICIBANK","ICICIGI",
+        "ICICIPRULI","IGL","INDHOTEL","INDIAMART","INDIGO","INDUSINDBK","INFY","INTELLECT","IPCALAB","IRCTC","ITC","JINDALSTEL","JSWSTEEL","JUBLFOOD","KOTAKBANK","LAURUSLABS",
+        "LICHSGFIN","LT","LTIM","LTTS","LUPIN","M&M","MARICO","MARUTI","MCDOWELL-N","MCX","METROPOLIS","MFSL","MGL","MPHASIS","MRF","MUTHOOTFIN","NAUKRI","NAVINFLUOR","OBEROIRLTY",
+        "OFSS","PEL","PERSISTENT","PIDILITIND","PIIND","POLYCAB","PVR","RAMCOCEM","SBICARD","SBILIFE","SBIN","SHREECEM","SHRIRAMFIN","SRF","SUNPHARMA","SUNTV","SYNGENE","TATACHEM",
+        "TATACOMM","TATACONSUM","TATAMOTORS","TCS","TECHM","TITAN","TORNTPHARM","TRENT","TVSMOTOR","UBL","ULTRACEMCO","UPL","VEDL","VOLTAS","WIPRO","ZYDUSLIFE"]
+        
+
 
         gain_list = LiveSegment.objects.filter(segment__in=["above"], change_perc__gte = 1.5).order_by('-change_perc').values_list('symbol', flat=True) 
         loss_list = LiveSegment.objects.filter(segment__in=["below"], change_perc__lte = -1.5).order_by('change_perc').values_list('symbol', flat=True)
@@ -241,17 +99,7 @@ def create_currency():
         # excluding open symbols
         open_remove_list = list(LiveEquityResult.objects.filter(~Q(opencrossed='Nil')).values_list('symbol', flat=True))
         fnolist = list(filter(lambda x: all([x.find(y) != 0 for y in open_remove_list]), fnolist))
-
-        # excluding section symbols
-#         if nowTime > section_check_time:
-#             section_remove_list = list(LiveEquityResult.objects.filter(section__gte = 10).values_list('symbol', flat=True))
-#             fnolist = list(filter(lambda x: all([x.find(y) != 0 for y in section_remove_list]), fnolist))
-
-        try:
-            fnolist.remove('AMARAJABAT')
-        except:
-            print('amar not found')
-            
+           
         def OIPercentChange(df):
             try:
                 print("OI Change percent Calculation - Started.")
@@ -595,26 +443,6 @@ def create_currency():
             from datetime import datetime, time
             pastDate = datetime.combine(datetime.now(timezone('Asia/Kolkata')), time(9,17))
 
-            #LiveEquityResult.objects.all().delete()
-            LiveOITotalAllSymbol.objects.filter(time__lte = pastDate).delete()
-            # # Deleting past historical data in the database
-            HistoryOIChange.objects.filter(time__lte = pastDate).delete()
-            HistoryOITotal.objects.filter(time__lte = pastDate).delete()
-            HistoryOIPercentChange.objects.filter(time__lte = pastDate).delete()
-            HistoryVolume.objects.filter(time__lte = pastDate).delete()
-            
-            # Deleting live data
-            LiveOITotal.objects.filter(time__lte = pastDate).delete()
-            LiveOIChange.objects.filter(time__lte = pastDate).delete()
-            LiveOIPercentChange.objects.filter(time__lte = pastDate).delete()
-            LiveVolume.objects.filter(time__lte = pastDate).delete()
-            FirstVolume.objects.filter(time__lte = pastDate).delete()
-            # deleting past first data
-    #         FirstLiveOITotal.objects.filter(time__lte = pastDate).delete()
-    #         FirstLiveOIChange.objects.filter(time__lte = pastDate).delete()
-    #         FirstLiveOIPercentChange.objects.filter(time__lte = pastDate).delete()
-
-
             if FirstLiveOITotal.objects.filter(symbol=item).count() == 0:
                 ChangeOICreation = FirstLiveOITotal(time=OITotalValue['celtt'],call1=OITotalValue['ceoi1'],call2=OITotalValue['ceoi2'],put1=OITotalValue['peoi1'],put2=OITotalValue['peoi2'],callstrike=OITotalValue['cestrike'],putstrike=OITotalValue['pestrike'],symbol=item,expiry=dte,strikegap=strikeGap)
                 ChangeOICreation.save()
@@ -633,7 +461,6 @@ def create_currency():
                 ChangeOIPercentCreation = FirstLiveOIPercentChange(time=percentChange['celtt'],call1=percentChange['ceoi1'],call2=percentChange['ceoi2'],put1=percentChange['peoi1'],put2=percentChange['peoi2'],callstrike=percentChange['cestrike'],putstrike=percentChange['pestrike'],symbol=item,expiry=dte)
                 ChangeOIPercentCreation.save()
         
-
 
             # volume check:
             value0 = LiveVolume.objects.filter(symbol=item)
@@ -706,37 +533,6 @@ def create_currency():
                 ChangeOICreation = LiveOIChange(max_call_volume = OIChangeValue["max_cal_volume"], max_put_volume = OIChangeValue["max_put_volume"],  max_call_volume_strike = OIChangeValue["max_cal_volume_strike"],  max_put_volume_strike = OIChangeValue["max_put_volume_strike"], call_final=OIChangeValue["call_final"], put_final=OIChangeValue["put_final"],max_ceoi_strike=OIChangeValue["max_ceoi_strike"], put_max_ceoi_strike=OIChangeValue["put_max_ceoi_strike"],call_percentage=OIChangeValue["call_percentage"],put_percentage=OIChangeValue["put_percentage"],call_ceoi_total=OIChangeValue["call_ceoi_total"],put_ceoi_total=OIChangeValue["put_ceoi_total"],time=OIChangeValue['celtt'],call1=OIChangeValue['ceoi1'],call2=OIChangeValue['ceoi2'],put1=OIChangeValue['peoi1'],put2=OIChangeValue['peoi2'],callstrike=OIChangeValue['cestrike'],putstrike=OIChangeValue['pestrike'],symbol=item,expiry=dte)
                 ChangeOICreation.save()
                 
-#             if len(value1) > 0:
-
-#                 if (value1[0].callstrike != OIChangeValue['cestrike']) or (value1[0].putstrike != OIChangeValue['pestrike']):
-
-#                     if (value1[0].max_ceoi_strike != OIChangeValue['max_ceoi_strike']) or (value1[0].put_max_ceoi_strike != OIChangeValue['put_max_ceoi_strike']):
-#                         # Adding to history table
-#                         ChangeOIHistory = HistoryOIChange(call_final=OIChangeValue["call_final"], put_final=OIChangeValue["put_final"],max_ceoi_strike=OIChangeValue["max_ceoi_strike"], put_max_ceoi_strike=OIChangeValue["put_max_ceoi_strike"],call_percentage=OIChangeValue["call_percentage"],put_percentage=OIChangeValue["put_percentage"],call_ceoi_total=OIChangeValue["call_ceoi_total"],put_ceoi_total=OIChangeValue["put_ceoi_total"],time=value1[0].time,call1=value1[0].call1,call2=value1[0].call2,put1=value1[0].put1,put2=value1[0].put2,callstrike=value1[0].callstrike,putstrike=value1[0].putstrike,symbol=value1[0].symbol,expiry=value1[0].expiry)
-#                         ChangeOIHistory.save()
-#                     else:
-#                         # Adding to history table
-#                         ChangeOIHistory = HistoryOIChange(time=value1[0].time,call1=value1[0].call1,call2=value1[0].call2,put1=value1[0].put1,put2=value1[0].put2,callstrike=value1[0].callstrike,putstrike=value1[0].putstrike,symbol=value1[0].symbol,expiry=value1[0].expiry)
-#                         ChangeOIHistory.save()
-
-#                     # deleting live table data
-#                     LiveOIChange.objects.filter(symbol=item).delete()
-
-#                     # Creating in live data
-#                     ChangeOICreation = LiveOIChange(call_final=OIChangeValue["call_final"], put_final=OIChangeValue["put_final"],max_ceoi_strike=OIChangeValue["max_ceoi_strike"], put_max_ceoi_strike=OIChangeValue["put_max_ceoi_strike"],call_percentage=OIChangeValue["call_percentage"],put_percentage=OIChangeValue["put_percentage"],call_ceoi_total=OIChangeValue["call_ceoi_total"],put_ceoi_total=OIChangeValue["put_ceoi_total"],time=OIChangeValue['celtt'],call1=OIChangeValue['ceoi1'],call2=OIChangeValue['ceoi2'],put1=OIChangeValue['peoi1'],put2=OIChangeValue['peoi2'],callstrike=OIChangeValue['cestrike'],putstrike=OIChangeValue['pestrike'],symbol=item,expiry=dte)
-#                     ChangeOICreation.save() 
-
-#                 else:
-#                     # deleting live table data
-#                     LiveOIChange.objects.filter(symbol=item).delete()
-
-#                     # Creating in live data
-#                     ChangeOICreation = LiveOIChange(call_final=OIChangeValue["call_final"], put_final=OIChangeValue["put_final"],max_ceoi_strike=OIChangeValue["max_ceoi_strike"], put_max_ceoi_strike=OIChangeValue["put_max_ceoi_strike"],call_percentage=OIChangeValue["call_percentage"],put_percentage=OIChangeValue["put_percentage"],call_ceoi_total=OIChangeValue["call_ceoi_total"],put_ceoi_total=OIChangeValue["put_ceoi_total"],time=OIChangeValue['celtt'],call1=OIChangeValue['ceoi1'],call2=OIChangeValue['ceoi2'],put1=OIChangeValue['peoi1'],put2=OIChangeValue['peoi2'],callstrike=OIChangeValue['cestrike'],putstrike=OIChangeValue['pestrike'],symbol=item,expiry=dte)
-#                     ChangeOICreation.save() 
-#             else:
-#                 ChangeOICreation = LiveOIChange(call_final=OIChangeValue["call_final"], put_final=OIChangeValue["put_final"],max_ceoi_strike=OIChangeValue["max_ceoi_strike"], put_max_ceoi_strike=OIChangeValue["put_max_ceoi_strike"],call_percentage=OIChangeValue["call_percentage"],put_percentage=OIChangeValue["put_percentage"],call_ceoi_total=OIChangeValue["call_ceoi_total"],put_ceoi_total=OIChangeValue["put_ceoi_total"],time=OIChangeValue['celtt'],call1=OIChangeValue['ceoi1'],call2=OIChangeValue['ceoi2'],put1=OIChangeValue['peoi1'],put2=OIChangeValue['peoi2'],callstrike=OIChangeValue['cestrike'],putstrike=OIChangeValue['pestrike'],symbol=item,expiry=dte)
-#                 ChangeOICreation.save()
-
             print("LiveOIChange data - Completed")
 
             value2 = LiveOITotal.objects.filter(symbol=item)
@@ -834,47 +630,18 @@ def create_currency():
             
             td_obj = TD('tdwsp127', 'saaral@127')
 
-            # x_run = False
-            # y_run = False
-            # z_run = False
 
-            # try:
             sbi_chain = td_obj.start_option_chain( x, dt(dte.year , dte.month , dte.day) ,chain_length = 75 )
-                # x_run = True
-            # except:
-                # print(f"Failed for {x}")
-                # td_obj = TD('tdwsp127', 'saaral@127')
 
-            # try:   
             bnf_chain = td_obj.start_option_chain( y, dt(dte.year , dte.month , dte.day) ,chain_length = 75 )
-                # y_run = True
 
-            # except:
-                # print(f"Failed for {y}")
-                # td_obj = TD('tdwsp127', 'saaral@127')
-            
-            # try: 
             nifty_chain = td_obj.start_option_chain( z, dt(dte.year , dte.month , dte.day) ,chain_length = 75)
-            # except:
-            # print(f"Failed for {z}")
-                # continue
 
             a_chain = td_obj.start_option_chain( a, dt(dte.year , dte.month , dte.day) ,chain_length = 75)
 
             b_chain = td_obj.start_option_chain( b, dt(dte.year , dte.month , dte.day) ,chain_length = 75)
 
             te.sleep(2)
-
-            # for req_id in req_ids:
-            #     live_data_objs[req_id] = deepcopy(td_obj.live_data[req_id])
-
-            
-            
-            
-            # print(sbi_chain_df)
-            # print(bnf_chain_df)
-            # print(nifty_chain_df)
-        # print(bnf_chain.get_option_chain())
 
             # if x_run:
             sbi_chain_df = sbi_chain.get_option_chain()
@@ -943,53 +710,6 @@ def create_currency():
         sampleDict = {}
         count=1
         connection_check = ''
-
-        for symbol in fnolist2:
-            try:
-                if connection_check == 'start':
-                    # Graceful exit
-                    td_obj.disconnect()
-                    td_obj.disconnect()
-                else:
-                    print("Proper graceful exit")
-
-                print(f"############################################  {symbol} ###############################")
-                expiry = "23-Feb-2023"
-                dte = dt.strptime(expiry, '%d-%b-%Y')
-                td_obj = TD('tdwsp127', 'saaral@127')
-                first_chain = td_obj.start_option_chain( symbol , dt(dte.year , dte.month , dte.day) ,chain_length = 75)
-
-                te.sleep(2)
-                connection_check == 'start'
-
-                df = first_chain.get_option_chain()
-                first_chain.stop_option_chain()
-
-                td_obj.disconnect()
-                td_obj.disconnect()
-                sampleDict[symbol] = df
-
-                if optionChainprocess(df,symbol,dte) == False:
-                    continue
-                connection_check == 'end'
-                print("Flow Completed")
-
-            except websocket.WebSocketConnectionClosedException as e:
-                print('This caught the websocket exception in optionchain realtime')
-                td_obj.disconnect()
-                td_obj.disconnect()
-
-            except IndexError as e:
-                print('This caught the exception in optionchain realtime')
-                print(e)
-                td_obj.disconnect() 
-                td_obj.disconnect()
-
-            except Exception as e:
-                print(e)
-                td_obj.disconnect()
-                td_obj.disconnect()
-            sleep(1)
 
 while True:
     create_currency()
